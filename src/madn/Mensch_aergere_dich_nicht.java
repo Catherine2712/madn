@@ -41,6 +41,12 @@ public class Mensch_aergere_dich_nicht {
 			anzSpieler = Integer.parseInt(sc.nextLine());
 		}
 		
+		//Dummy Spieler
+		/*Spieler cathy = new Spieler("Cathy", "blau");
+		Spieler tobi = new Spieler("Tobi", "rot");
+		Spieler hendrik = new Spieler("Hendrik", "grün");
+		Spieler florian = new Spieler("Florian", "gelb");*/
+		Spieler[] spieler = new Spieler[4] ;
 		
 		//Spieler erstellen, Farben zuweisen, Spielfiguren erstellen und positionieren
 		//Dummy name
@@ -74,14 +80,22 @@ public class Mensch_aergere_dich_nicht {
 				System.out.println("Hallo " + name + "! Deine Spielfiguren haben die Farbe " + farbe);
 				break;	
 			}
-			spieler[i]  = new Spieler(name, farbe);
-			
-			//aktives Spielfeld erzeugen
-			Spielfeld meinspielfeld=new Spielfeld(Spieler... spieler);
-			meinspielfeld.ausgabe();
-			System.out.println(spieler[i].getFiguren());
+			spieler[i]  = new Spieler(name, farbe);	
 		
-		}			
+		}	
+		
+		if(anzSpieler < 4) {
+			for(int l = anzSpieler; l<4 ; l++)
+			spieler[l] = new Spieler("Dummy", "--");
+		}
+		
+		
+		
+		//aktives Spielfeld erzeugen
+		Spielfeld meinspielfeld=new Spielfeld(spieler[0], spieler[1], spieler[2], spieler[3]);
+		System.out.println("hier");
+		meinspielfeld.ausgabe();
+		//System.out.println(spieler[i].getFiguren());
 
 		//System.out.println(cathy.getName());
 		sc.close();
@@ -106,7 +120,7 @@ public class Mensch_aergere_dich_nicht {
 			
 			for(int k = 0; k < anzSpieler; k++) {
 				meinSpielfeld.wuerfeln();
-				spielfigurWaehlen(Spieler[k]);
+				//spielfigurWaehlen(Spieler[k]);
 				//meinSpielfeld.sucheFeldposition(meinSpielfeld, spielfigur);
 				//meinSpielfeld.ziehen(w, i, zugMoeglich);
 			}
@@ -118,15 +132,12 @@ public class Mensch_aergere_dich_nicht {
 	}
 	
 	
-	public Spielfigur spielfigurWaehlen(Spieler[]) {
+	/*public Spielfigur spielfigurWaehlen(Spieler[]) {
 		System.out.println("Welche Figur soll bewegt werden? 0-3?");
 		meinSpieler.getFiguren();
 		return Spielfigur;
-	}
-	
-	public void addPlayer() {
-		players.add( spieler );
-	}
+	}*/
 	
 }
+
 
