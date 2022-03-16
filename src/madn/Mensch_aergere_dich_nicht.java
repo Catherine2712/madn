@@ -156,7 +156,7 @@ public class Mensch_aergere_dich_nicht {
 		Scanner sc = new Scanner(System.in);
 		String eingabe = sc.nextLine();
 		for(int i = 0; i < 4; i++) {
-			figur[i]
+			figur[i];
 		}
 		return spielfigur;
 	}
