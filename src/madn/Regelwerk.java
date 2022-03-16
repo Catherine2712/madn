@@ -17,6 +17,7 @@ public class Regelwerk {
 		}else return false;
 	}
 	
+	//Wird geschlagen?
 	public static boolean schlagenMoeglich(Spielfeld sf, Spielfigur auswahl, int wuerfel) {
 		int idxZiel;
 		idxZiel=sf.sucheFeldposition(sf.getFeld(), auswahl)+wuerfel;
