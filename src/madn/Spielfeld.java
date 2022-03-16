@@ -107,14 +107,13 @@ public class Spielfeld {
 		return -1;
 		}
 	
-	public int ziehen(int w, int i, boolean zugMoeglich){								// Abfrage, ob ein Zug möglich ist
-		if (zugMoeglich == true) {
+	public int ziehen(int w, int i){													// Ziehen einer Figur (Vorabfrage zugErlaubt)
+		Regelwerk.zugErlaubt(null, null, w);
 		int p = i + w;
 		return p;
-		}else {
-			return -1;
+
 		}
-	}
+	
 	
 	public void schlagen(int s){														// Schlagen
 		Spielfigur figur= feld[s];
