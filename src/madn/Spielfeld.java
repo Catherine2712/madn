@@ -116,7 +116,7 @@ public class Spielfeld {
 		}
 	}
 	
-	public void schlagen(int s){
+	public void schlagen(int s){														// Schlagen
 		Spielfigur figur= feld[s];
 		Spieler sp = spielerZurFigur(figur);
 		if (sp==spieler[0]) {
@@ -238,6 +238,25 @@ public class Spielfeld {
 		}
 		return sieg;
 	}
+	
+	public Spielfigur spielfigurselect(String name) {
+		Spielfigur fig=null;
+		for (int z=0; z<16; z++) {
+			if(startfeld[z].getFarbe()==name) {
+				fig = startfeld[z];
+			}
+		}
+		for (int z=0; z<20; z++) {
+			if(feld[z].getFarbe()==name) {
+				fig = feld[z];
+			}
+		}
+		if (fig==null) {
+			System.out.println("Die Figur ist nicht auswählbar");
+		}
+		return fig;
+	}
+	
 }
 
 
