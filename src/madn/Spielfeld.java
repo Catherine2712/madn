@@ -109,14 +109,27 @@ public class Spielfeld {
 	
 	public int ziehen(int w, int i, boolean zugMoeglich){								// Abfrage, ob ein Zug möglich ist
 		if (zugMoeglich == true) {
-		int neuePosition = i + w;
-		return neuePosition;
+		int p = i + w;
+		return p;
 		}else {
 			return -1;
 		}
 	}
 	
-	public void schlagen(Spielfigur raus){
+	public void schlagen(Spielfigur raus, boolean zugMoeglich, Spielfigur[]sf, Spielfigur spielfigur,int p){
+		if (zugMoeglich == true) {
+			for (int i = 0; i < sf.length; i++) {
+			if (sf[i] == spielfigur) {
+				sf[i] = null;
+				sf[i] = sf[p];
+				spielfigur = startfeld[i];
+				System.out.println("Du hast gerade " + spielfigur + "rausgeworfen.");
+			}else {
+				System.out.println("Fail");
+			}
+		}
+			}
+		
 		
 	}
 	
