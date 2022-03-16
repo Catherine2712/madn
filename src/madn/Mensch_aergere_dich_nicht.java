@@ -1,7 +1,7 @@
 package madn;
 
 import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 public class Mensch_aergere_dich_nicht {
 	
@@ -9,7 +9,7 @@ public class Mensch_aergere_dich_nicht {
 	// Anfang Attribute
 	//Attribute
 	private int anzSpieler;
-	private Spieler[] spieler;
+	public Spieler[] spieler = new Spieler[4] ;
 	ArrayList<Spieler> players = new ArrayList<Spieler>();
 	private Spielfeld meinspielfeld;
 	private Regelwerk meinRegelwerk;
@@ -36,7 +36,7 @@ public class Mensch_aergere_dich_nicht {
 	
 		//DAU 2-4 Spieler
 		while((anzSpieler < 2)||(anzSpieler>4)) {
-			System.out.println("Mensch aergere dich nicht ist ein Spiel fÃ¼r 2-4 Spieler.");
+			System.out.println("Mensch aergere dich nicht ist ein Spiel fuer 2-4 Spieler.");
 			System.out.println("Bitte die Anzahl der Spieler*innen eingeben: ");
 			anzSpieler = Integer.parseInt(sc.nextLine());
 		}
@@ -48,7 +48,7 @@ public class Mensch_aergere_dich_nicht {
 		Spieler tobi = new Spieler("Tobi", "rot");
 		Spieler hendrik = new Spieler("Hendrik", "grün");
 		Spieler florian = new Spieler("Florian", "gelb");*/
-		Spieler[] spieler = new Spieler[4] ;
+		//Spieler[] spieler = new Spieler[4] ;
 		
 		//Spieler erstellen, Farben zuweisen, Spielfiguren erstellen und positionieren
 		//Dummy name
@@ -97,7 +97,7 @@ public class Mensch_aergere_dich_nicht {
 		Spielfeld meinspielfeld=new Spielfeld(spieler[0], spieler[1], spieler[2], spieler[3]);
 		
 		meinspielfeld.ausgabe();
-		//System.out.println(spieler[i].getFiguren());
+		System.out.println(spieler[0].getFiguren());
 
 		//System.out.println(cathy.getName());
 		sc.close();
@@ -110,27 +110,30 @@ public class Mensch_aergere_dich_nicht {
 
 	public void spielen() {
 		
-		
-		
 		//Abbruchbedingung anlegen
 		boolean finished = false;
 		int wuerfel;
-
+		Scanner sc1 = new Scanner(System.in);
+		String eingabe = "test";
+		//eingabe = sc1.nextLine();
 		//System.out.println(getMeinSpielfeld());
 		//Eigentlicher Spielablauf
 		while(finished != true) {
 			meinspielfeld.ausgabe();
 			for(int k = 0; k < anzSpieler; k++) {
-				//Spieler curSpieler = this.spieler[k];
-				//System.out.println("hier");
+				Spieler curSpieler = this.spieler[k];
+				System.out.println(curSpieler.getName() + " du bist an der Reihe!");
 				wuerfel = meinspielfeld.wuerfeln();
 				//System.out.println(wuerfel);
 				//System.out.println(meinspielfeld.wuerfeln());
+				System.out.println("Welche Spielfigur?");
+				
 				
 				//Rausziehen
 				for(int j = 0; j < 20; j++) {
-					if((wuerfel==6) && (meinspielfeld[i]==null)) {
-						meinspielfeld.rausgehen();
+					if((wuerfel==6)/* && (meinspielfeld[i]==null)*/) {
+						//meinspielfeld.rausgehen(meinspielfeld.spielfigurselect(eingabe));
+						wuerfel = meinspielfeld.wuerfeln();
 					}	
 				}
 				
@@ -145,6 +148,7 @@ public class Mensch_aergere_dich_nicht {
 				}
 			}
 	
+			sc1.close();
 		}
 		
 	}
@@ -161,6 +165,11 @@ public class Mensch_aergere_dich_nicht {
 	public Spielfeld getMeinSpielfeld() {
 			return meinspielfeld;
 		}
+	
+	//get Spieler
+		public Spieler getMeinSpieler(int i) {
+				return spieler[i];
+			}
 	
 	/*public Spielfigur spielfigurWaehlen(Spieler curSpieler) {
 		System.out.println("Welche Figur soll bewegt werden? " + curSpieler.getFiguren().getFarbe());
