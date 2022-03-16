@@ -3,7 +3,6 @@ package madn;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
 public class Mensch_aergere_dich_nicht {
 	
 	
@@ -11,20 +10,20 @@ public class Mensch_aergere_dich_nicht {
 	//Attribute
 	private int anzSpieler;
 	private Spieler[] spieler;
-	//ArrayList<Spieler> meineSpieler = new ArrayList<Spieler>();
+	ArrayList<Spieler> players = new ArrayList<Spieler>();
 	private Spielfeld meinSpielfeld;
 	private Regelwerk meinRegelwerk;
 	// Ende Attribute
 	
 	
 	//Konstruktor
-	public Mensch_aergere_dich_nicht (int anzSpieler, Spieler[] Spieler, Spielfeld meinSpielfeld, Regelwerk meinRegelwerk){
+	/*public Mensch_aergere_dich_nicht (int anzSpieler, Spieler[] Spieler, Spielfeld meinSpielfeld, Regelwerk meinRegelwerk){
 		
 		this.anzSpieler = anzSpieler;  
 		//this.Spieler[] = Spieler[];
 		this.meinSpielfeld = meinSpielfeld;
 		this.meinRegelwerk = meinRegelwerk;
-	}
+	}*/
 		  
 	
 	//Methoden
@@ -48,15 +47,11 @@ public class Mensch_aergere_dich_nicht {
 		String name = "Max Muster";
 		for(int i = 0; i < anzSpieler; i++) {
 		
-			Spieler[i]  = new Spieler;
-			
 			System.out.println("Bitte den Namen der " + (i+1) + ". Person eingeben: ");
 			name = sc.nextLine();
-			
 			//Dummy farbe
-			
 			String farbe = "bleu";
-			
+	
 			switch(i) {
 			case 0: 
 				farbe = "blau";
@@ -79,10 +74,12 @@ public class Mensch_aergere_dich_nicht {
 				System.out.println("Hallo " + name + "! Deine Spielfiguren haben die Farbe " + farbe);
 				break;	
 			}
+			spieler[i]  = new Spieler(name, farbe);
 			
 			//aktives Spielfeld erzeugen
 			Spielfeld meinspielfeld=new Spielfeld(Spieler... spieler);
 			meinspielfeld.ausgabe();
+			System.out.println(spieler[i].getFiguren());
 		
 		}			
 
@@ -109,12 +106,26 @@ public class Mensch_aergere_dich_nicht {
 			
 			for(int k = 0; k < anzSpieler; k++) {
 				meinSpielfeld.wuerfeln();
+				spielfigurWaehlen(Spieler[k]);
+				//meinSpielfeld.sucheFeldposition(meinSpielfeld, spielfigur);
+				//meinSpielfeld.ziehen(w, i, zugMoeglich);
 			}
 			
 			finished = true;
 			zaehler ++;
 		}
 		
+	}
+	
+	
+	public Spielfigur spielfigurWaehlen(Spieler[]) {
+		System.out.println("Welche Figur soll bewegt werden? 0-3?");
+		meinSpieler.getFiguren();
+		return Spielfigur;
+	}
+	
+	public void addPlayer() {
+		players.add( spieler );
 	}
 	
 }
