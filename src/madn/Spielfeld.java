@@ -116,20 +116,41 @@ public class Spielfeld {
 		}
 	}
 	
-	public void schlagen(Spielfigur raus, boolean zugMoeglich, Spielfigur[]sf, Spielfigur spielfigur,int p){
-		if (zugMoeglich == true) {
-			for (int i = 0; i < sf.length; i++) {
-			if (sf[i] == spielfigur) {
-				sf[i] = null;
-				sf[i] = sf[p];
-				spielfigur = startfeld[i];
-				System.out.println("Du hast gerade " + spielfigur + "rausgeworfen.");
-			}else {
-				System.out.println("Fail");
+	public void schlagen(int s){
+		Spielfigur figur= feld[s];
+		Spieler sp = spielerZurFigur(figur);
+		if (sp==spieler[0]) {
+			for (int z=0; z<4; z++) {
+				if (startfeld[z]==null) {
+					startfeld[z]=figur;
+					break;
+				}
 			}
 		}
+		if (sp==spieler[1]) {
+			for (int z=4; z<8; z++) {
+				if (startfeld[z]==null) {
+					startfeld[z]=figur;
+					break;
+				}
 			}
-		
+		}
+		if (sp==spieler[2]) {
+			for (int z=8; z<12; z++) {
+				if (startfeld[z]==null) {
+					startfeld[z]=figur;
+					break;
+				}
+			}
+		}
+		if (sp==spieler[3]) {
+			for (int z=12; z<16; z++) {
+				if (startfeld[z]==null) {
+					startfeld[z]=figur;
+					break;
+				}
+			}
+		}		
 		
 	}
 	
@@ -141,7 +162,7 @@ public class Spielfeld {
 				a= true;
 				startfeld[z]=null;
 				if (feld[0]!=null) {
-					schlagen(feld[0]);
+					schlagen(0);
 				}
 				feld[0]=figur;
 			}
@@ -151,6 +172,50 @@ public class Spielfeld {
 		}	
 		
 		return a;	
+	}
+	
+	public void zielziehen(Spielfigur figur) {								// Methode ins Ziel ziehen!																		
+		String farbe = figur.getFarbe();
+		Spieler sp = spielerZurFigur(figur);
+		for (int z=0; z<20; z++) {
+			if (feld[z] == figur) {
+				feld[z]=null;
+			}
+		}
+		if (sp==spieler[0]) {
+			int x =0;
+			zielfeld[x]=figur;
+			x++;
+		}
+		if (sp==spieler[1]) {
+			int y =4;
+			zielfeld[y]=figur;
+			y++;
+		}
+		if (sp==spieler[2]) {
+			int z =8;
+			zielfeld[z]=figur;
+			z++;
+		}
+		if (sp==spieler[3]) {
+			int v =12;
+			zielfeld[v]=figur;
+			v++;
+		}
+			
+	}
+	
+	public Spieler spielerZurFigur(Spielfigur figur) {
+		for (int i=0; i<this.spieler.length; i++) {
+			Spieler curSpieler = this.spieler[i];
+			for (int j=0; j<curSpieler.getFiguren().length; j++) {
+				Spielfigur aktFigur=curSpieler.getFiguren()[j];
+				if (aktFigur==figur) {
+					return curSpieler;
+				}
+			}
+		}
+		return null;
 	}
 }
 
