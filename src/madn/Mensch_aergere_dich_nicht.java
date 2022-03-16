@@ -41,6 +41,8 @@ public class Mensch_aergere_dich_nicht {
 			anzSpieler = Integer.parseInt(sc.nextLine());
 		}
 		
+		setAnzSpieler(anzSpieler);
+		
 		//Dummy Spieler
 		/*Spieler cathy = new Spieler("Cathy", "blau");
 		Spieler tobi = new Spieler("Tobi", "rot");
@@ -93,7 +95,7 @@ public class Mensch_aergere_dich_nicht {
 		
 		//aktives Spielfeld erzeugen
 		Spielfeld meinspielfeld=new Spielfeld(spieler[0], spieler[1], spieler[2], spieler[3]);
-		System.out.println("hier");
+		
 		meinspielfeld.ausgabe();
 		//System.out.println(spieler[i].getFiguren());
 
@@ -114,12 +116,12 @@ public class Mensch_aergere_dich_nicht {
 		//Zaehler fuer aktiven Spieler
 		int zaehler = 0;
 		int zaehlerAktiv = 0;
-		
+		System.out.println(anzSpieler);
 		//Eigentlicher Spielablauf
 		while(finished != true) {
 			
 			for(int k = 0; k < anzSpieler; k++) {
-				meinSpielfeld.wuerfeln();
+				//meinSpielfeld.wuerfeln();
 				//spielfigurWaehlen(Spieler[k]);
 				//meinSpielfeld.sucheFeldposition(meinSpielfeld, spielfigur);
 				//meinSpielfeld.ziehen(w, i, zugMoeglich);
@@ -131,7 +133,9 @@ public class Mensch_aergere_dich_nicht {
 		
 	}
 	
-	
+	public void setAnzSpieler(int anzSpieler) {
+		this.anzSpieler = anzSpieler;
+	}
 	/*public Spielfigur spielfigurWaehlen(Spieler[]) {
 		System.out.println("Welche Figur soll bewegt werden? 0-3?");
 		meinSpieler.getFiguren();
