@@ -123,6 +123,7 @@ public class Mensch_aergere_dich_nicht {
 		while(finished != true) {
 			meinspielfeld.ausgabe();
 			for(int k = 0; k < anzSpieler; k++) {
+				Spieler curSpieler = this.spieler[k];
 				meinspielfeld.wuerfeln();
 				//spielfigurWaehlen(Spieler[k]);
 				//meinSpielfeld.sucheFeldposition(meinSpielfeld, spielfigur);
@@ -150,11 +151,15 @@ public class Mensch_aergere_dich_nicht {
 			return meinspielfeld;
 		}
 	
-	/*public Spielfigur spielfigurWaehlen(Spieler[]) {
-		System.out.println("Welche Figur soll bewegt werden? 0-3?");
-		meinSpieler.getFiguren();
-		return Spielfigur;
-	}*/
+	public Spielfigur spielfigurWaehlen(Spieler curSpieler) {
+		System.out.println("Welche Figur soll bewegt werden? " + curSpieler.getFiguren().getFarbe());
+		Scanner sc = new Scanner(System.in);
+		String eingabe = sc.nextLine();
+		for(int i = 0; i < 4; i++) {
+			figur[i]
+		}
+		return spielfigur;
+	}
 	
 }
 
