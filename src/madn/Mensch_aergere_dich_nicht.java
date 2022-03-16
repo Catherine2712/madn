@@ -114,26 +114,37 @@ public class Mensch_aergere_dich_nicht {
 		
 		//Abbruchbedingung anlegen
 		boolean finished = false;
-		
-		//Zaehler fuer aktiven Spieler
-		//int zaehler = 0;
-		//int zaehlerAktiv = 0;
-		System.out.println(getMeinSpielfeld());
+		int wuerfel;
+
+		//System.out.println(getMeinSpielfeld());
 		//Eigentlicher Spielablauf
 		while(finished != true) {
 			meinspielfeld.ausgabe();
 			for(int k = 0; k < anzSpieler; k++) {
-				Spieler curSpieler = this.spieler[k];
-				meinspielfeld.wuerfeln();
-				//spielfigurWaehlen(Spieler[k]);
+				//Spieler curSpieler = this.spieler[k];
+				//System.out.println("hier");
+				wuerfel = meinspielfeld.wuerfeln();
+				//System.out.println(wuerfel);
+				//System.out.println(meinspielfeld.wuerfeln());
+				
+				//Rausziehen
+				for(int j = 0; j < 20; j++) {
+					if((wuerfel==6) && (meinspielfeld[i]==null)) {
+						meinspielfeld.rausgehen();
+					}	
+				}
+				
+				//meinspielfeld.spielfigurWaehlen(Spieler[k]);
+				
 				//meinSpielfeld.sucheFeldposition(meinSpielfeld, spielfigur);
 				//meinSpielfeld.ziehen(w, i, zugMoeglich);
-			}
-			if(meinspielfeld.sieg()) {
-				finished = true;
-			}
 			
-			//zaehler ++;
+				if(meinspielfeld.sieg()) {
+					finished = true;
+					break;
+				}
+			}
+	
 		}
 		
 	}
@@ -151,7 +162,7 @@ public class Mensch_aergere_dich_nicht {
 			return meinspielfeld;
 		}
 	
-	public Spielfigur spielfigurWaehlen(Spieler curSpieler) {
+	/*public Spielfigur spielfigurWaehlen(Spieler curSpieler) {
 		System.out.println("Welche Figur soll bewegt werden? " + curSpieler.getFiguren().getFarbe());
 		Scanner sc = new Scanner(System.in);
 		String eingabe = sc.nextLine();
@@ -159,7 +170,7 @@ public class Mensch_aergere_dich_nicht {
 			figur[i];
 		}
 		return spielfigur;
-	}
+	}*/
 	
 }
 
