@@ -8,8 +8,8 @@ public class Regelwerk {
 	}
 	
 	
-	//out of range auffangen
-	private static boolean outOfRange(Spielfeld sf, Spielfigur auswahl, int wuerfel) {
+	//out of range auffangen --> auch als Abfrage, ob in den Zielbereich gelaufen wird
+	public static boolean outOfRange(Spielfeld sf, Spielfigur auswahl, int wuerfel) {
 		int idxZiel;
 		if(arrayFinden(sf, auswahl)==1) {
 			idxZiel=sf.sucheFeldposition(sf.getFeld(), auswahl)+wuerfel;
