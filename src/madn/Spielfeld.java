@@ -239,7 +239,7 @@ public class Spielfeld {
 		return sieg;
 	}
 	
-	public Spielfigur spielfigurselect(String name) {
+	public Spielfigur spielfigurselect(String name) { //
 		Spielfigur fig=null;
 		for (int z=0; z<16; z++) {
 			if(startfeld[z].getFarbe()==name) {
