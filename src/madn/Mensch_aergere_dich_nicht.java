@@ -11,7 +11,7 @@ public class Mensch_aergere_dich_nicht {
 	private int anzSpieler;
 	private Spieler[] spieler;
 	ArrayList<Spieler> players = new ArrayList<Spieler>();
-	private Spielfeld meinSpielfeld;
+	private Spielfeld meinspielfeld;
 	private Regelwerk meinRegelwerk;
 	// Ende Attribute
 	
@@ -27,7 +27,7 @@ public class Mensch_aergere_dich_nicht {
 		  
 	
 	//Methoden
-	public Spielfeld initialisiereSpielfeld() {
+	public void initialisiereSpielfeld() {
 		//Begruessung und Anzahl der Spieler waehlen
 		System.out.println("Herzlich Willkommen bei >Informatiker*in aergere dich nicht<!");
 		System.out.println("Bitte die Anzahl der Spieler*innen eingeben: ");
@@ -101,7 +101,9 @@ public class Mensch_aergere_dich_nicht {
 
 		//System.out.println(cathy.getName());
 		sc.close();
-	return meinSpielfeld;
+	
+		setMeinSpielfeld(meinspielfeld);
+		//return meinspielfeld;
 	}
 	
 	
@@ -114,21 +116,23 @@ public class Mensch_aergere_dich_nicht {
 		boolean finished = false;
 		
 		//Zaehler fuer aktiven Spieler
-		int zaehler = 0;
-		int zaehlerAktiv = 0;
-		System.out.println(anzSpieler);
+		//int zaehler = 0;
+		//int zaehlerAktiv = 0;
+		System.out.println(getMeinSpielfeld());
 		//Eigentlicher Spielablauf
 		while(finished != true) {
-			
+			meinspielfeld.ausgabe();
 			for(int k = 0; k < anzSpieler; k++) {
-				//meinSpielfeld.wuerfeln();
+				meinspielfeld.wuerfeln();
 				//spielfigurWaehlen(Spieler[k]);
 				//meinSpielfeld.sucheFeldposition(meinSpielfeld, spielfigur);
 				//meinSpielfeld.ziehen(w, i, zugMoeglich);
 			}
+			if(meinspielfeld.sieg()) {
+				finished = true;
+			}
 			
-			finished = true;
-			zaehler ++;
+			//zaehler ++;
 		}
 		
 	}
@@ -136,6 +140,16 @@ public class Mensch_aergere_dich_nicht {
 	public void setAnzSpieler(int anzSpieler) {
 		this.anzSpieler = anzSpieler;
 	}
+	
+	public void setMeinSpielfeld(Spielfeld meinspielfeld) {
+		this.meinspielfeld = meinspielfeld;
+	}
+	
+	//get meinSpielfeld
+	public Spielfeld getMeinSpielfeld() {
+			return meinspielfeld;
+		}
+	
 	/*public Spielfigur spielfigurWaehlen(Spieler[]) {
 		System.out.println("Welche Figur soll bewegt werden? 0-3?");
 		meinSpieler.getFiguren();
