@@ -205,7 +205,7 @@ public class Spielfeld {
 			
 	}
 	
-	public Spieler spielerZurFigur(Spielfigur figur) {
+	public Spieler spielerZurFigur(Spielfigur figur) {						// Finde den Spieler zur Spielfigur
 		for (int i=0; i<this.spieler.length; i++) {
 			Spieler curSpieler = this.spieler[i];
 			for (int j=0; j<curSpieler.getFiguren().length; j++) {
@@ -217,5 +217,27 @@ public class Spielfeld {
 		}
 		return null;
 	}
+	
+	public boolean sieg() {
+		boolean sieg = false;
+		if (zielfeld[0]!=null && zielfeld[1]!=null && zielfeld[2]!=null && zielfeld[3]!=null) {
+			sieg=true;
+			System.out.println("Glückwunsch, Sie haben das Spiel gewonnen!");
+		}
+		if (zielfeld[4]!=null && zielfeld[5]!=null && zielfeld[6]!=null && zielfeld[7]!=null) {
+			sieg=true;
+			System.out.println("Glückwunsch, Sie haben das Spiel gewonnen!");
+		}
+		if (zielfeld[8]!=null && zielfeld[9]!=null && zielfeld[10]!=null && zielfeld[11]!=null) {
+			sieg=true;
+			System.out.println("Glückwunsch, Sie haben das Spiel gewonnen!");
+		}
+		if (zielfeld[12]!=null && zielfeld[13]!=null && zielfeld[14]!=null && zielfeld[15]!=null) {
+			sieg=true;
+			System.out.println("Glückwunsch, Sie haben das Spiel gewonnen!");
+		}
+		return sieg;
+	}
 }
+
 
