@@ -15,9 +15,14 @@ public class Spieler {
 		
 	public Spielfigur[] getFiguren() {
 		return this.figuren;
-		
+
 	}
 	
+	
+	public String getName() {
+		return name;
+	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
