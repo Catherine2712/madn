@@ -269,7 +269,22 @@ public class Spielfeld {
 			System.out.println("Die Figur ist nicht auswählbar");
 		}
 		return fig;
-	}	
+	}
+	
+	
+	public boolean spielfeldLeer(Spieler curSpieler) {
+		boolean leer = false;
+		
+		for(int i = 0; i < 4; i++) {
+			Spielfigur aktFigur=curSpieler.getFiguren()[i];
+			for(int j = 0; j < 20; j++) {
+				if(feld[j]==aktFigur) {
+					leer = true;
+				}
+			}
+		}
+		return leer;	
+	}
 }
 
 
