@@ -30,19 +30,19 @@ public class Regelwerk {
 	}
 	
 	//Figur im Startfeld und 6 gewürfelt -->rauskommen möglich!
-	private static boolean rauskommenMoeglich(Spielfeld sf, Spielfigur auswahl, int wuerfel){
+	public static boolean rauskommenMoeglich(Spielfeld sf, Spielfigur auswahl, int wuerfel){
 		if((arrayFinden(sf, auswahl)==0 && wuerfel==6)) return true;
 		System.out.println("Rausziehen nicht möglich!");
 		return false;
 	}
 	
 	//Ziehen im Hauptfeld erlaubt?
-	private static boolean ziehenErlaubt(Spielfeld sf, Spielfigur auswahl, int wuerfel) {
+	public static boolean ziehenErlaubt(Spielfeld sf, Spielfigur auswahl, int wuerfel) {
 		int idxZiel;
 		idxZiel=sf.sucheFeldposition(sf.getFeld(), auswahl)+wuerfel;
 		if(arrayFinden(sf, auswahl)==1) {
 			if(insZielLaufen(sf, auswahl, wuerfel)) return true;												//Zug der aus dem Feld ins Zielfeld führt
-			if(!(auswahl.getFarbe().equals(sf.getFeld()[idxZiel].getFarbe()))) {
+			if((sf.getFeld()[idxZiel] != null)&&!(auswahl.getFarbe().equals(sf.getFeld()[idxZiel].getFarbe()))) {
 				return true;
 			}else return false;
 		}else return false;

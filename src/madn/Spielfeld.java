@@ -107,11 +107,11 @@ public class Spielfeld {
 		return -1;
 		}
 	
-	public boolean ziehen(int w, Spielfigur figur){													// Ziehen einer Figur (Vorabfrage zugErlaubt)
-		boolean a = false;
+	public void ziehen(int w, Spielfigur figur){													// Ziehen einer Figur (Vorabfrage zugErlaubt)
 		for (int z=0; z<20; z++) {
 			if (feld[z]==figur) {
 				int p = z + w;
+				System.out.println(p);
 				if(p>feld.length) {
 					zielziehen(figur);
 				}else {
@@ -122,12 +122,9 @@ public class Spielfeld {
 					feld[p]=figur;
 				}
 			}
+			break;
 		}
-		if (a=false) {
-		System.out.println("Die Figur befindet sich nicht im Spielfeld!");
-		}	
-		return a;
-		}
+	}
 	
 	
 	public void schlagen(int s){														// Schlagen

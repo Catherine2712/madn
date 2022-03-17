@@ -120,30 +120,48 @@ public class Mensch_aergere_dich_nicht {
 		//eingabe = sc1.nextLine();
 		//System.out.println(getMeinSpielfeld());
 		//Eigentlicher Spielablauf
+		meinspielfeld.ausgabe();
 		while(finished != true) {
-			meinspielfeld.ausgabe();
 			for(int k = 0; k < anzSpieler; k++) {
 				Spieler curSpieler = this.spieler[k];
 				System.out.println(curSpieler.getName() + " du bist an der Reihe!");
-				//wuerfel = meinspielfeld.wuerfeln();
+				/*wuerfel = meinspielfeld.wuerfeln();*/
 				wuerfel = 6;
-				//System.out.println(wuerfel);
-				//System.out.println(meinspielfeld.wuerfeln());
 				System.out.println("Welche Spielfigur?");
 				String eingabe = eingabeAbfragen();
-				
-				//Rausziehen
-				for(int j = 0; j < 20; j++) {
-					if((wuerfel==6)/* && (meinspielfeld[i]==null)*/) {
-						if(Regelwerk.zugErlaubt(meinspielfeld, meinspielfeld.spielfigurselect(eingabe), wuerfel)) {
-							meinspielfeld.rausgehen(meinspielfeld.spielfigurselect(eingabe));
-							wuerfel = meinspielfeld.wuerfeln();
-						}
-						
-					}	
+				while((meinspielfeld.spielfigurselect(eingabe) == null)/*||(Regelwerk.zugErlaubt(meinspielfeld,meinspielfeld.spielfigurselect(eingabe), wuerfel ) == false)&&Regelwerk.rauskommenMoeglich()*/) {
+					System.out.println("Bitte eine andere Figur wählen!");
+					eingabe = eingabeAbfragen();
+				}
+				if (Regelwerk.rauskommenMoeglich(meinspielfeld,meinspielfeld.spielfigurselect(eingabe), wuerfel)) {
+					for(int j = 0; j < 20; j++) {
+						if((wuerfel==6)/* && (meinspielfeld[i]==null)*/) {
+					
+								meinspielfeld.rausgehen(meinspielfeld.spielfigurselect(eingabe));
+								wuerfel = meinspielfeld.wuerfeln();
+								meinspielfeld.ziehen(wuerfel,meinspielfeld.spielfigurselect(eingabe));
+								if (Regelwerk.ziehenErlaubt(meinspielfeld,meinspielfeld.spielfigurselect(eingabe), wuerfel)) {
+									meinspielfeld.ziehen(wuerfel,meinspielfeld.spielfigurselect(eingabe));
+									System.out.println("lost");
+								}
+							}
+					}
 				}
 				
-				meinspielfeld.ausgabe();
+				if (Regelwerk.ziehenErlaubt(meinspielfeld,meinspielfeld.spielfigurselect(eingabe), wuerfel)) {
+					meinspielfeld.ziehen(wuerfel,meinspielfeld.spielfigurselect(eingabe));
+				}
+			
+				
+				
+				//Rausziehen
+				
+				meinspielfeld.ausgabe();	
+						
+				
+			}
+				
+				
 				//meinspielfeld.spielfigurWaehlen(Spieler[k]);
 				
 				//meinSpielfeld.sucheFeldposition(meinSpielfeld, spielfigur);
@@ -158,7 +176,7 @@ public class Mensch_aergere_dich_nicht {
 			//sc1.close();
 		}
 		
-	}
+	
 	
 	public String eingabeAbfragen() {
 		String eingabe = "test";
