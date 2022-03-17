@@ -1,6 +1,5 @@
 package madn;
 
-import java.util.ArrayList;
 import java.util.*;
 
 public class Mensch_aergere_dich_nicht {
@@ -114,29 +113,19 @@ public class Mensch_aergere_dich_nicht {
 	
 	// Hilfsmethoden
 	
-	public String eingabeAbfragen() {
+	private String eingabeAbfragen() {
 		String eingabe = "test";
 		Scanner scan = new Scanner(System.in);
 		eingabe = scan.nextLine();
 		return eingabe;
 	}
 	
-	public void setAnzSpieler(int anzSpieler) {
+	private void setAnzSpieler(int anzSpieler) {
 		this.anzSpieler = anzSpieler;
 	}
 	
-	public void setMeinSpielfeld(Spielfeld meinspielfeld) {
+	private void setMeinSpielfeld(Spielfeld meinspielfeld) {
 		this.meinspielfeld = meinspielfeld;
 	}
-	
-	//get meinSpielfeld
-	public Spielfeld getMeinSpielfeld() {
-			return meinspielfeld;
-		}
-	
-	//get Spieler
-		public Spieler getMeinSpieler(int i) {
-				return spieler[i];
-			}
 	
 }
