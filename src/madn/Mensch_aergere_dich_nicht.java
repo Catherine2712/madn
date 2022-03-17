@@ -88,22 +88,29 @@ public class Mensch_aergere_dich_nicht {
 				System.out.println(curSpieler.getName() + " du bist an der Reihe!");
 				wuerfel = meinspielfeld.wuerfeln();
 				System.out.println("Welche Spielfigur?");
-				String eingabe = eingabeAbfragen();
-				Spielfigur figur=meinspielfeld.spielfigurselect(eingabe);
-				while(curSpieler.figurTeilSpieler(figur)==false) {
-					System.out.println("Bitte eine andere Figur wählen!");
-					eingabe = eingabeAbfragen();
-					figur=meinspielfeld.spielfigurselect(eingabe);
-				}	
-				if (Regelwerk.arrayFinden(meinspielfeld, meinspielfeld.spielfigurselect(eingabe))==1) {
+				boolean ok=true;
+				do {
+					String eingabe = eingabeAbfragen();
+					Spielfigur figur=meinspielfeld.spielfigurselect(eingabe);
+					while(curSpieler.figurTeilSpieler(figur)==false) {
+						System.out.println("Bitte eine andere Figur wählen!");
+						eingabe = eingabeAbfragen();
+						figur=meinspielfeld.spielfigurselect(eingabe);
+					}	
+					if (Regelwerk.arrayFinden(meinspielfeld, meinspielfeld.spielfigurselect(eingabe))==1) {
 					meinspielfeld.ziehen(wuerfel, meinspielfeld.spielfigurselect(eingabe));
-				} else {
-					if ((Regelwerk.arrayFinden(meinspielfeld, meinspielfeld.spielfigurselect(eingabe))==0) && (wuerfel==6)) {	
-						meinspielfeld.rausgehen(meinspielfeld.spielfigurselect(eingabe));
+					} else {
+						if ((Regelwerk.arrayFinden(meinspielfeld, meinspielfeld.spielfigurselect(eingabe))==0) && (wuerfel==6)) {	
+							meinspielfeld.rausgehen(meinspielfeld.spielfigurselect(eingabe));
+						} else {
+							if ((Regelwerk.arrayFinden(meinspielfeld, meinspielfeld.spielfigurselect(eingabe))==0) && (wuerfel!=6)) {
+							 System.out.println("Rausgehen nicht möglich, da keine Sechs gewürfelt wurde!");
+							} 			
+						}
 					}
-				}
-								
-				meinspielfeld.ausgabe();
+					System.out.println();			
+					meinspielfeld.ausgabe();
+				} while (ok==false); 
 			}
 			if(meinspielfeld.sieg()) {
 				finished = true;

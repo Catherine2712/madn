@@ -192,8 +192,7 @@ public class Spielfeld {
 		return a;	
 	}
 	
-	public void zielziehen(Spielfigur figur) {								// Methode ins Ziel ziehen!																		
-		String farbe = figur.getFarbe();
+	public void zielziehen(Spielfigur figur) {											// Methode ins Ziel ziehen!																		
 		Spieler sp = spielerZurFigur(figur);
 		for (int z=0; z<20; z++) {
 			if (feld[z] == figur) {
@@ -220,7 +219,7 @@ public class Spielfeld {
 			
 	}
 	
-	public Spieler spielerZurFigur(Spielfigur figur) {						// Finde den Spieler zur Spielfigur
+	public Spieler spielerZurFigur(Spielfigur figur) {									// Finde den Spieler zur Spielfigur
 		for (int i=0; i<this.spieler.length; i++) {
 			Spieler curSpieler = this.spieler[i];
 			for (int j=0; j<curSpieler.getFiguren().length; j++) {
@@ -233,7 +232,7 @@ public class Spielfeld {
 		return null;
 	}
 	
-	public boolean sieg() {													// Abfrage Spielsieg
+	public boolean sieg() {																// Abfrage Spielsieg
 		boolean sieg = false;
 		if (zielfeld[0]!=null && zielfeld[1]!=null && zielfeld[2]!=null && zielfeld[3]!=null) {
 			sieg=true;
@@ -254,7 +253,7 @@ public class Spielfeld {
 		return sieg;
 	}
 	
-	public Spielfigur spielfigurselect(String name) { 							// Spielfigur mit Hilfe des Kurznamens auswählen 
+	public Spielfigur spielfigurselect(String name) { 										// Spielfigur mit Hilfe des Kurznamens auswählen 
 		Spielfigur fig=null;
 		for (int z=0; z<16; z++) {
 			if((startfeld[z]!=null)&&(startfeld[z].toString()).equals(name)) {
