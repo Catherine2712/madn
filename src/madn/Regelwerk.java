@@ -49,7 +49,7 @@ public class Regelwerk {
 	}
 		
 	//Ziel: Array ausgeben, in welchem die zu ziehende Figur liegt: Start: 0, Haupt: 1, Ziel:2
-	private static int arrayFinden(Spielfeld sf, Spielfigur auswahl) {
+	public static int arrayFinden(Spielfeld sf, Spielfigur auswahl) {
 		if(sf.sucheFeldposition(sf.getStartfeld(), auswahl) !=-1) {
 			return 0;
 		}else {

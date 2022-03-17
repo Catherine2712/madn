@@ -125,33 +125,44 @@ public class Mensch_aergere_dich_nicht {
 			for(int k = 0; k < anzSpieler; k++) {
 				Spieler curSpieler = this.spieler[k];
 				System.out.println(curSpieler.getName() + " du bist an der Reihe!");
-				/*wuerfel = meinspielfeld.wuerfeln();*/
-				wuerfel = 6;
+				wuerfel = meinspielfeld.wuerfeln();
+				wuerfel = 6; // später rausmachen
 				System.out.println("Welche Spielfigur?");
 				String eingabe = eingabeAbfragen();
 				while((meinspielfeld.spielfigurselect(eingabe) == null)/*||(Regelwerk.zugErlaubt(meinspielfeld,meinspielfeld.spielfigurselect(eingabe), wuerfel ) == false)&&Regelwerk.rauskommenMoeglich()*/) {
 					System.out.println("Bitte eine andere Figur wählen!");
 					eingabe = eingabeAbfragen();
 				}
+				System.out.println(Regelwerk.arrayFinden(meinspielfeld, meinspielfeld.spielfigurselect(eingabe)));
+				if (Regelwerk.arrayFinden(meinspielfeld, meinspielfeld.spielfigurselect(eingabe))==1) {
+					meinspielfeld.ziehen(wuerfel, meinspielfeld.spielfigurselect(eingabe));
+				} else {
+					if (Regelwerk.arrayFinden(meinspielfeld, meinspielfeld.spielfigurselect(eingabe))==0) {
+						meinspielfeld.rausgehen(meinspielfeld.spielfigurselect(eingabe));
+					}
+				}
+				/*
 				if (Regelwerk.rauskommenMoeglich(meinspielfeld,meinspielfeld.spielfigurselect(eingabe), wuerfel)) {
 					for(int j = 0; j < 20; j++) {
-						if((wuerfel==6)/* && (meinspielfeld[i]==null)*/) {
+						if((wuerfel==6) && (meinspielfeld[i]==null)) {
 					
-								meinspielfeld.rausgehen(meinspielfeld.spielfigurselect(eingabe));
-								wuerfel = meinspielfeld.wuerfeln();
+							wuerfel = meinspielfeld.wuerfeln();	
+							meinspielfeld.rausgehen(meinspielfeld.spielfigurselect(eingabe));
+							meinspielfeld.ziehen(wuerfel,meinspielfeld.spielfigurselect(eingabe));
+							if (Regelwerk.ziehenErlaubt(meinspielfeld,meinspielfeld.spielfigurselect(eingabe), wuerfel)) {
 								meinspielfeld.ziehen(wuerfel,meinspielfeld.spielfigurselect(eingabe));
-								if (Regelwerk.ziehenErlaubt(meinspielfeld,meinspielfeld.spielfigurselect(eingabe), wuerfel)) {
-									meinspielfeld.ziehen(wuerfel,meinspielfeld.spielfigurselect(eingabe));
-									System.out.println("lost");
-								}
+								System.out.println("lost");
 							}
+						}
 					}
 				}
 				
+				
+				meinspielfeld.ziehen(wuerfel,meinspielfeld.spielfigurselect(eingabe));
 				if (Regelwerk.ziehenErlaubt(meinspielfeld,meinspielfeld.spielfigurselect(eingabe), wuerfel)) {
 					meinspielfeld.ziehen(wuerfel,meinspielfeld.spielfigurselect(eingabe));
 				}
-			
+				*/
 				
 				
 				//Rausziehen

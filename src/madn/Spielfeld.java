@@ -108,22 +108,24 @@ public class Spielfeld {
 		}
 	
 	public void ziehen(int w, Spielfigur figur){													// Ziehen einer Figur (Vorabfrage zugErlaubt)
+		int p =0;
+		int i =0;
 		for (int z=0; z<20; z++) {
 			if (feld[z]==figur) {
-				int p = z + w;
-				System.out.println(p);
-				if(p>feld.length) {
-					zielziehen(figur);
-				}else {
-					feld[z]=null;
-					if (feld[p]!=null) {
-						schlagen(p);
-					}
-					feld[p]=figur;
-				}
+				p = z + w;
+				i=z;
+				break;
 			}
-			break;
 		}
+		if(p>feld.length) {
+			zielziehen(figur);
+		}else {
+			feld[i]=null;
+				if (feld[p]!=null) {
+					schlagen(p);
+				}
+				feld[p]=figur;
+		}				
 	}
 	
 	
