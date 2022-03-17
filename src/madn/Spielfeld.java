@@ -6,6 +6,12 @@ public class Spielfeld {
 	// Attribute
 	
 	private int l=20;										// Spielfeldgröße
+	private int x=0;
+	private int y=4;
+	private int z=8;
+	private int v=12;
+	
+	
 	private Spielfigur[] startfeld = new Spielfigur[16]; 	// Startfeld der Länge 16 - Spieler 1 (0-3), Spieler 2(4-7), Spieler 3(8-11), Spieler 4 (12-15)
 	private Spielfigur[] zielfeld = new Spielfigur[16];  	// Zielfeld der Länge 16 - Spieler 1 (0-3), Spieler 2(4-7), Spieler 3(8-11), Spieler 4 (12-15)
 	private Spielfigur[] feld = new Spielfigur[l]; 			// Eigentliches Spielfeld
@@ -93,7 +99,7 @@ public class Spielfeld {
 		
 	public int wuerfeln() {																// Methode Würfeln
 		Random r = new Random();
-		int w = r.nextInt(6)+1;
+		int w = r.nextInt(2)+5;  														//Würfel noch anpassen!!
 		System.out.println("Sie haben eine "+w+" gewürfelt!");
 		return w;		
 	}
@@ -107,7 +113,7 @@ public class Spielfeld {
 		return -1;
 		}
 	
-	public void ziehen(int w, Spielfigur figur){													// Ziehen einer Figur (Vorabfrage zugErlaubt)
+	public void ziehen(int w, Spielfigur figur){										// Ziehen einer Figur (Vorabfrage zugErlaubt)
 		int p =0;
 		int i =0;
 		for (int z=0; z<20; z++) {
@@ -117,7 +123,7 @@ public class Spielfeld {
 				break;
 			}
 		}
-		if(p>feld.length) {
+		if(p>(feld.length-1)) {
 			zielziehen(figur);
 		}else {
 			feld[i]=null;
@@ -196,22 +202,19 @@ public class Spielfeld {
 			}
 		}
 		if (sp==spieler[0]) {
-			int x =0;
 			zielfeld[x]=figur;
 			x++;
 		}
 		if (sp==spieler[1]) {
-			int y =4;
+			
 			zielfeld[y]=figur;
 			y++;
 		}
 		if (sp==spieler[2]) {
-			int z =8;
 			zielfeld[z]=figur;
 			z++;
 		}
 		if (sp==spieler[3]) {
-			int v =12;
 			zielfeld[v]=figur;
 			v++;
 		}

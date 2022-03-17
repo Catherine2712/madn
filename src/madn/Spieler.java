@@ -27,5 +27,14 @@ public class Spieler {
 		this.name = name;
 	}
 		
+	public boolean figurTeilSpieler(Spielfigur figur) {
+		boolean rueck = false;
+			for(int i=0; i<figuren.length; i++) {
+				if (figuren[i]==figur) {
+					rueck = true;
+				}
+			}
+		return rueck;
+	}
 	
 }

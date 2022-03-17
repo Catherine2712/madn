@@ -112,13 +112,9 @@ public class Mensch_aergere_dich_nicht {
 
 	public void spielen() {
 		
-		//Abbruchbedingung anlegen
 		boolean finished = false;
 		int wuerfel;
-		//Scanner sc1 = new Scanner(System.in);
-		//String eingabe = "test";
-		//eingabe = sc1.nextLine();
-		//System.out.println(getMeinSpielfeld());
+		
 		//Eigentlicher Spielablauf
 		meinspielfeld.ausgabe();
 		while(finished != true) {
@@ -126,68 +122,32 @@ public class Mensch_aergere_dich_nicht {
 				Spieler curSpieler = this.spieler[k];
 				System.out.println(curSpieler.getName() + " du bist an der Reihe!");
 				wuerfel = meinspielfeld.wuerfeln();
-				wuerfel = 6; // später rausmachen
 				System.out.println("Welche Spielfigur?");
 				String eingabe = eingabeAbfragen();
-				while((meinspielfeld.spielfigurselect(eingabe) == null)/*||(Regelwerk.zugErlaubt(meinspielfeld,meinspielfeld.spielfigurselect(eingabe), wuerfel ) == false)&&Regelwerk.rauskommenMoeglich()*/) {
+				Spielfigur figur=meinspielfeld.spielfigurselect(eingabe);
+				while(curSpieler.figurTeilSpieler(figur)==false) {
+				//while((meinspielfeld.spielfigurselect(eingabe) == null) && (curSpieler.figurTeilSpieler(figur)==false)) { //Zweiter Teil der Bedingung wurde nicht erkannt!
 					System.out.println("Bitte eine andere Figur wählen!");
 					eingabe = eingabeAbfragen();
-				}
-				System.out.println(Regelwerk.arrayFinden(meinspielfeld, meinspielfeld.spielfigurselect(eingabe)));
+					figur=meinspielfeld.spielfigurselect(eingabe);
+				}	
 				if (Regelwerk.arrayFinden(meinspielfeld, meinspielfeld.spielfigurselect(eingabe))==1) {
 					meinspielfeld.ziehen(wuerfel, meinspielfeld.spielfigurselect(eingabe));
 				} else {
-					if (Regelwerk.arrayFinden(meinspielfeld, meinspielfeld.spielfigurselect(eingabe))==0) {
+					if ((Regelwerk.arrayFinden(meinspielfeld, meinspielfeld.spielfigurselect(eingabe))==0) && (wuerfel==6)) {	// Würfel Prüfung besser aus Regelwerk?	
 						meinspielfeld.rausgehen(meinspielfeld.spielfigurselect(eingabe));
 					}
 				}
-				/*
-				if (Regelwerk.rauskommenMoeglich(meinspielfeld,meinspielfeld.spielfigurselect(eingabe), wuerfel)) {
-					for(int j = 0; j < 20; j++) {
-						if((wuerfel==6) && (meinspielfeld[i]==null)) {
-					
-							wuerfel = meinspielfeld.wuerfeln();	
-							meinspielfeld.rausgehen(meinspielfeld.spielfigurselect(eingabe));
-							meinspielfeld.ziehen(wuerfel,meinspielfeld.spielfigurselect(eingabe));
-							if (Regelwerk.ziehenErlaubt(meinspielfeld,meinspielfeld.spielfigurselect(eingabe), wuerfel)) {
-								meinspielfeld.ziehen(wuerfel,meinspielfeld.spielfigurselect(eingabe));
-								System.out.println("lost");
-							}
-						}
-					}
-				}
-				
-				
-				meinspielfeld.ziehen(wuerfel,meinspielfeld.spielfigurselect(eingabe));
-				if (Regelwerk.ziehenErlaubt(meinspielfeld,meinspielfeld.spielfigurselect(eingabe), wuerfel)) {
-					meinspielfeld.ziehen(wuerfel,meinspielfeld.spielfigurselect(eingabe));
-				}
-				*/
-				
-				
-				//Rausziehen
-				
-				meinspielfeld.ausgabe();	
-						
-				
+								
+				meinspielfeld.ausgabe();
 			}
-				
-				
-				//meinspielfeld.spielfigurWaehlen(Spieler[k]);
-				
-				//meinSpielfeld.sucheFeldposition(meinSpielfeld, spielfigur);
-				//meinSpielfeld.ziehen(w, i, zugMoeglich);
-			
-				if(meinspielfeld.sieg()) {
-					finished = true;
-					break;
-				}
+			if(meinspielfeld.sieg()) {
+				finished = true;
 			}
-	
-			//sc1.close();
 		}
-		
+	}
 	
+	// Hilfsmethoden
 	
 	public String eingabeAbfragen() {
 		String eingabe = "test";
