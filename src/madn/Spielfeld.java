@@ -107,11 +107,26 @@ public class Spielfeld {
 		return -1;
 		}
 	
-	public int ziehen(int w, int i){													// Ziehen einer Figur (Vorabfrage zugErlaubt)
-		Regelwerk.zugErlaubt(null, null, w);
-		int p = i + w;
-		return p;
-
+	public boolean ziehen(int w, Spielfigur figur){													// Ziehen einer Figur (Vorabfrage zugErlaubt)
+		boolean a = false;
+		for (int z=0; z<20; z++) {
+			if (feld[z]==figur) {
+				int p = z + w;
+				if(p>feld.length) {
+					zielziehen(figur);
+				}else {
+					feld[z]=null;
+					if (feld[p]!=null) {
+						schlagen(p);
+					}
+					feld[p]=figur;
+				}
+			}
+		}
+		if (a=false) {
+		System.out.println("Die Figur befindet sich nicht im Spielfeld!");
+		}	
+		return a;
 		}
 	
 	
