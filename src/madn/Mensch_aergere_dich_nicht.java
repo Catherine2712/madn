@@ -99,7 +99,7 @@ public class Mensch_aergere_dich_nicht {
 		Spielfeld meinspielfeld=new Spielfeld(spieler[0], spieler[1], spieler[2], spieler[3]);
 		
 		meinspielfeld.ausgabe();
-		System.out.println(spieler[0].getFiguren());
+		//System.out.println(spieler[0].getFiguren());
 
 		//System.out.println(cathy.getName());
 		//sc.close();

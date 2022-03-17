@@ -255,13 +255,15 @@ public class Spielfeld {
 	
 	public Spielfigur spielfigurselect(String name) { //
 		Spielfigur fig=null;
+		//System.out.println(getStartfeld()[0].getFarbe().toString());
+		//System.out.println((startfeld[0].toString()));
 		for (int z=0; z<16; z++) {
-			if(startfeld[z].getFarbe()==name) {
+			if((startfeld[z]!=null)&&(startfeld[z].toString()).equals(name)) {
 				fig = startfeld[z];
 			}
 		}
 		for (int z=0; z<20; z++) {
-			if(feld[z].getFarbe()==name) {
+			if((feld[z]!=null)&&(feld[z].toString()).equals(name)) {
 				fig = feld[z];
 			}
 		}
