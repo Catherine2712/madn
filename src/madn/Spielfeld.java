@@ -6,10 +6,10 @@ public class Spielfeld {
 	// Attribute
 	
 	private int l=20;										// Spielfeldgröße
-	private int x=0;
-	private int y=4;
-	private int z=8;
-	private int v=12;
+	private int x=0;										// Zielbereich Spieler 1
+	private int y=4;										// Zielbereich Spieler 2
+	private int z=8;										// Zielbereich Spieler 3
+	private int v=12;										// Zielbereich Spieler 4
 	
 	
 	private Spielfigur[] startfeld = new Spielfigur[16]; 	// Startfeld der Länge 16 - Spieler 1 (0-3), Spieler 2(4-7), Spieler 3(8-11), Spieler 4 (12-15)
@@ -34,7 +34,7 @@ public class Spielfeld {
 	
 	//---------------------------------------------------------------------------	
 	
-	// Setter und Getter
+	// Setter and Getter
 
 	public Spielfigur[] getStartfeld() {
 		return startfeld;
@@ -106,14 +106,14 @@ public class Spielfeld {
 	
 	public int sucheFeldposition(Spielfigur[]sf, Spielfigur spielfigur) {				// Methode Spielfigur finden
 		for (int i = 0; i < sf.length; i++) {
-		if (sf[i] == spielfigur) {
-		return i;
-		}
+			if (sf[i] == spielfigur) {
+				return i;
+			}
 		}
 		return -1;
-		}
+	}
 	
-	public void ziehen(int w, Spielfigur figur){										// Ziehen einer Figur (Vorabfrage zugErlaubt)
+	public void ziehen (int w, Spielfigur figur){										// Ziehen einer Spielfigur
 		int p =0;
 		int i =0;
 		for (int z=0; z<20; z++) {
@@ -135,7 +135,7 @@ public class Spielfeld {
 	}
 	
 	
-	public void schlagen(int s){														// Schlagen
+	public void schlagen(int s){														// Funktion Schlagen
 		Spielfigur figur= feld[s];
 		Spieler sp = spielerZurFigur(figur);
 		if (sp==spieler[0]) {
@@ -169,8 +169,7 @@ public class Spielfeld {
 					break;
 				}
 			}
-		}		
-		
+		}			
 	}
 	
 		
@@ -234,31 +233,29 @@ public class Spielfeld {
 		return null;
 	}
 	
-	public boolean sieg() {													// Abfrage Spielsieg!
+	public boolean sieg() {													// Abfrage Spielsieg
 		boolean sieg = false;
 		if (zielfeld[0]!=null && zielfeld[1]!=null && zielfeld[2]!=null && zielfeld[3]!=null) {
 			sieg=true;
-			System.out.println("Glückwunsch" +spieler[00].getName()+", Sie haben das Spiel gewonnen!");
+			System.out.println("Glückwunsch " +spieler[00].getName()+", Sie haben das Spiel gewonnen!");
 		}
 		if (zielfeld[4]!=null && zielfeld[5]!=null && zielfeld[6]!=null && zielfeld[7]!=null) {
 			sieg=true;
-			System.out.println("Glückwunsch" +spieler[01].getName()+", Sie haben das Spiel gewonnen!");
+			System.out.println("Glückwunsch " +spieler[01].getName()+", Sie haben das Spiel gewonnen!");
 		}
 		if (zielfeld[8]!=null && zielfeld[9]!=null && zielfeld[10]!=null && zielfeld[11]!=null) {
 			sieg=true;
-			System.out.println("Glückwunsch" +spieler[02].getName()+", Sie haben das Spiel gewonnen!");
+			System.out.println("Glückwunsch " +spieler[02].getName()+", Sie haben das Spiel gewonnen!");
 		}
 		if (zielfeld[12]!=null && zielfeld[13]!=null && zielfeld[14]!=null && zielfeld[15]!=null) {
 			sieg=true;
-			System.out.println("Glückwunsch" +spieler[03].getName()+", Sie haben das Spiel gewonnen!");
+			System.out.println("Glückwunsch " +spieler[03].getName()+", Sie haben das Spiel gewonnen!");
 		}
 		return sieg;
 	}
 	
-	public Spielfigur spielfigurselect(String name) { //
+	public Spielfigur spielfigurselect(String name) { 							// Spielfigur mit Hilfe des Kurznamens auswählen 
 		Spielfigur fig=null;
-		//System.out.println(getStartfeld()[0].getFarbe().toString());
-		//System.out.println((startfeld[0].toString()));
 		for (int z=0; z<16; z++) {
 			if((startfeld[z]!=null)&&(startfeld[z].toString()).equals(name)) {
 				fig = startfeld[z];
@@ -273,8 +270,7 @@ public class Spielfeld {
 			System.out.println("Die Figur ist nicht auswählbar");
 		}
 		return fig;
-	}
-	
+	}	
 }
 
 
