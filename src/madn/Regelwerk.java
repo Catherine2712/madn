@@ -32,6 +32,7 @@ public class Regelwerk {
 	//Figur im Startfeld und 6 gewürfelt -->rauskommen möglich!
 	private static boolean rauskommenMoeglich(Spielfeld sf, Spielfigur auswahl, int wuerfel){
 		if((arrayFinden(sf, auswahl)==0 && wuerfel==6)) return true;
+		System.out.println("Rausziehen nicht möglich!");
 		return false;
 	}
 	

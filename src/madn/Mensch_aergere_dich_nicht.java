@@ -12,16 +12,15 @@ public class Mensch_aergere_dich_nicht {
 	public Spieler[] spieler = new Spieler[4] ;
 	ArrayList<Spieler> players = new ArrayList<Spieler>();
 	private Spielfeld meinspielfeld;
-	private Regelwerk meinRegelwerk;
 	// Ende Attribute
 	
 	
 	//Konstruktor
-	/*public Mensch_aergere_dich_nicht (int anzSpieler, Spieler[] Spieler, Spielfeld meinSpielfeld, Regelwerk meinRegelwerk){
+	/*public Mensch_aergere_dich_nicht (Regelwerk meinRegelwerk){
 		
-		this.anzSpieler = anzSpieler;  
+		//this.anzSpieler = anzSpieler;  
 		//this.Spieler[] = Spieler[];
-		this.meinSpielfeld = meinSpielfeld;
+		//this.meinspielfeld = meinspielfeld;
 		this.meinRegelwerk = meinRegelwerk;
 	}*/
 		  
@@ -31,14 +30,16 @@ public class Mensch_aergere_dich_nicht {
 		//Begruessung und Anzahl der Spieler waehlen
 		System.out.println("Herzlich Willkommen bei >Informatiker*in aergere dich nicht<!");
 		System.out.println("Bitte die Anzahl der Spieler*innen eingeben: ");
-		Scanner sc = new Scanner(System.in);
-		int anzSpieler = Integer.parseInt(sc.nextLine());
-	
+		//Scanner sc = new Scanner(System.in);
+		//int anzSpieler = Integer.parseInt(sc.nextLine());
+		int anzSpieler = Integer.parseInt(eingabeAbfragen());
+		
 		//DAU 2-4 Spieler
 		while((anzSpieler < 2)||(anzSpieler>4)) {
 			System.out.println("Mensch aergere dich nicht ist ein Spiel fuer 2-4 Spieler.");
 			System.out.println("Bitte die Anzahl der Spieler*innen eingeben: ");
-			anzSpieler = Integer.parseInt(sc.nextLine());
+			//anzSpieler = Integer.parseInt(sc.nextLine());
+			anzSpieler = Integer.parseInt(eingabeAbfragen());
 		}
 		
 		setAnzSpieler(anzSpieler);
@@ -56,7 +57,8 @@ public class Mensch_aergere_dich_nicht {
 		for(int i = 0; i < anzSpieler; i++) {
 		
 			System.out.println("Bitte den Namen der " + (i+1) + ". Person eingeben: ");
-			name = sc.nextLine();
+			//name = sc.nextLine();
+			name = eingabeAbfragen();
 			//Dummy farbe
 			String farbe = "bleu";
 	
@@ -100,7 +102,7 @@ public class Mensch_aergere_dich_nicht {
 		System.out.println(spieler[0].getFiguren());
 
 		//System.out.println(cathy.getName());
-		sc.close();
+		//sc.close();
 	
 		setMeinSpielfeld(meinspielfeld);
 		//return meinspielfeld;
@@ -113,8 +115,8 @@ public class Mensch_aergere_dich_nicht {
 		//Abbruchbedingung anlegen
 		boolean finished = false;
 		int wuerfel;
-		Scanner sc1 = new Scanner(System.in);
-		String eingabe = "test";
+		//Scanner sc1 = new Scanner(System.in);
+		//String eingabe = "test";
 		//eingabe = sc1.nextLine();
 		//System.out.println(getMeinSpielfeld());
 		//Eigentlicher Spielablauf
@@ -123,20 +125,25 @@ public class Mensch_aergere_dich_nicht {
 			for(int k = 0; k < anzSpieler; k++) {
 				Spieler curSpieler = this.spieler[k];
 				System.out.println(curSpieler.getName() + " du bist an der Reihe!");
-				wuerfel = meinspielfeld.wuerfeln();
+				//wuerfel = meinspielfeld.wuerfeln();
+				wuerfel = 6;
 				//System.out.println(wuerfel);
 				//System.out.println(meinspielfeld.wuerfeln());
 				System.out.println("Welche Spielfigur?");
-				
+				String eingabe = eingabeAbfragen();
 				
 				//Rausziehen
 				for(int j = 0; j < 20; j++) {
 					if((wuerfel==6)/* && (meinspielfeld[i]==null)*/) {
-						//meinspielfeld.rausgehen(meinspielfeld.spielfigurselect(eingabe));
-						wuerfel = meinspielfeld.wuerfeln();
+						if(Regelwerk.zugErlaubt(meinspielfeld, meinspielfeld.spielfigurselect(eingabe), wuerfel)) {
+							meinspielfeld.rausgehen(meinspielfeld.spielfigurselect(eingabe));
+							wuerfel = meinspielfeld.wuerfeln();
+						}
+						
 					}	
 				}
 				
+				meinspielfeld.ausgabe();
 				//meinspielfeld.spielfigurWaehlen(Spieler[k]);
 				
 				//meinSpielfeld.sucheFeldposition(meinSpielfeld, spielfigur);
@@ -148,9 +155,16 @@ public class Mensch_aergere_dich_nicht {
 				}
 			}
 	
-			sc1.close();
+			//sc1.close();
 		}
 		
+	}
+	
+	public String eingabeAbfragen() {
+		String eingabe = "test";
+		Scanner scan = new Scanner(System.in);
+		eingabe = scan.nextLine();
+		return eingabe;
 	}
 	
 	public void setAnzSpieler(int anzSpieler) {
