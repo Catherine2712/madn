@@ -273,13 +273,13 @@ public class Spielfeld {
 	
 	
 	public boolean spielfeldLeer(Spieler curSpieler) {
-		boolean leer = false;
+		boolean leer = true;
 		
 		for(int i = 0; i < 4; i++) {
 			Spielfigur aktFigur=curSpieler.getFiguren()[i];
 			for(int j = 0; j < 20; j++) {
 				if(feld[j]==aktFigur) {
-					leer = true;
+					leer = false;
 				}
 			}
 		}
