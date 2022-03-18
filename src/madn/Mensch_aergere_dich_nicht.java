@@ -116,10 +116,11 @@ public class Mensch_aergere_dich_nicht {
 					System.out.println();			
 					meinspielfeld.ausgabe();
 					counterRaus++;
+					if(meinspielfeld.sieg()) {
+						finished = true;
+						break;
+					}
 				}while (((meinspielfeld.spielfeldLeer(curSpieler)==true) && (wuerfel != 6) && (counterRaus < 3) )|| ( (wuerfel == 6) && (ok==false))); 
-			}
-			if(meinspielfeld.sieg()) {
-				finished = true;
 			}
 		}
 	}
