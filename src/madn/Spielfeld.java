@@ -99,7 +99,7 @@ public class Spielfeld {
 		
 	public int wuerfeln() {																// Methode Würfeln
 		Random r = new Random();
-		int w = r.nextInt(2)+5;  														//Würfel noch anpassen!!
+		int w = r.nextInt(6)+1;  														//Würfel noch anpassen!!
 		System.out.println("Sie haben eine "+w+" gewürfelt!");
 		return w;		
 	}

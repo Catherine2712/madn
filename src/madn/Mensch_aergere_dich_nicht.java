@@ -4,8 +4,6 @@ import java.util.*;
 
 public class Mensch_aergere_dich_nicht {
 	
-	
-	// Anfang Attribute
 	//Attribute
 	private int anzSpieler;
 	public Spieler[] spieler = new Spieler[4] ;
@@ -118,10 +116,6 @@ public class Mensch_aergere_dich_nicht {
 					System.out.println();			
 					meinspielfeld.ausgabe();
 					counterRaus++;
-					/*if(wuerfel == 6) {
-						wuerfel = meinspielfeld.wuerfeln();
-					}*/
-					//System.out.println(meinspielfeld.spielfeldLeer(curSpieler));
 				}while (((meinspielfeld.spielfeldLeer(curSpieler)==true) && (wuerfel != 6) && (counterRaus < 3) )|| ( (wuerfel == 6) && (ok==false))); 
 			}
 			if(meinspielfeld.sieg()) {
