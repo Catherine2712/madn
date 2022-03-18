@@ -86,11 +86,12 @@ public class Mensch_aergere_dich_nicht {
 			for(int k = 0; k < anzSpieler; k++) {
 				Spieler curSpieler = this.spieler[k];
 				System.out.println(curSpieler.getName() + " du bist an der Reihe!");
-				wuerfel = meinspielfeld.wuerfeln();
-				System.out.println("Welche Spielfigur?");
+				
 				boolean ok=false;
 				int counterRaus = 0;
-				while ((((meinspielfeld.spielfeldLeer(curSpieler)==true) && (wuerfel != 6) && (counterRaus < 3) )||  (wuerfel == 6)) && (ok==false)) {					
+				do{			
+					wuerfel = meinspielfeld.wuerfeln();
+					System.out.println("Welche Spielfigur?");
 					String eingabe = eingabeAbfragen();
 					Spielfigur figur=meinspielfeld.spielfigurselect(eingabe);
 					while(curSpieler.figurTeilSpieler(figur)==false) {
@@ -117,11 +118,11 @@ public class Mensch_aergere_dich_nicht {
 					System.out.println();			
 					meinspielfeld.ausgabe();
 					counterRaus++;
-					if(wuerfel == 6) {
+					/*if(wuerfel == 6) {
 						wuerfel = meinspielfeld.wuerfeln();
-					}
-					System.out.println(meinspielfeld.spielfeldLeer(curSpieler));
-				}
+					}*/
+					//System.out.println(meinspielfeld.spielfeldLeer(curSpieler));
+				}while (((meinspielfeld.spielfeldLeer(curSpieler)==true) && (wuerfel != 6) && (counterRaus < 3) )|| ( (wuerfel == 6) && (ok==false))); 
 			}
 			if(meinspielfeld.sieg()) {
 				finished = true;
